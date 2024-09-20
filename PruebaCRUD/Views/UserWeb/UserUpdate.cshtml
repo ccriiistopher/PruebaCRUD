@@ -1,0 +1,45 @@
+﻿@model PruebaCRUD.Models.User
+
+@{
+    ViewData["Title"] = $"Usuario - {Model.Nombre} {Model.Apellido}";
+}
+
+<div class="text-center">
+    <h1 class="display-5 mb-5">Actualizar Usuario #@Model.Id</h1>
+    <div class="container">
+        <div class="row align-content-center justify-content-center gap-3">
+            <div class="card w-100 p-3">
+                <div class="card-body">
+                    @using (Html.BeginForm("UpdateUser", "UserApi", routeValues: new
+                    {
+                        userId = Model.Id
+                    }, method: FormMethod.Post, htmlAttributes: new { @id = "apiForm", @class = "form-group d-flex flex-column align-items-start" }, antiforgery: false))
+                    {
+                        <div class="form-group w-100 d-flex flex-column align-items-start">
+                            <label for="Dni">Dni:</label>
+                            @Html.TextBoxFor(m => m.Dni, new { @id = "Dni", @name = "Dni", @class = "form-control", @readonly = true })
+                        </div>
+                        <div class="form-group w-100 d-flex flex-column align-items-start">
+                            <label for="Id">Id:</label>
+                            @Html.TextBoxFor(m => m.Id, new { @id = "Id", @name = "Id", @class = "form-control", @readonly = true })
+                        </div>
+
+                        <div class="form-group w-100 d-flex flex-column align-items-start">
+                            <label for="Nombre">Nombre(s):</label>
+                            @Html.TextBoxFor(m => m.Nombre, new { @id = "Nombre", @name = "Nombre", @class = "form-control" })
+                        </div>
+
+                        <div class="form-group w-100 d-flex flex-column align-items-start">
+                            <label for="Apellido">Apellido(s):</label>
+                            @Html.TextBoxFor(m => m.Apellido, new { @id = "Apellido", @name = "Apellido", @class = "form-control" })
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Actualizar</button>
+                    }
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>

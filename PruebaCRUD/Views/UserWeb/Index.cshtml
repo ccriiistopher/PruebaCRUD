@@ -1,0 +1,35 @@
+﻿@model PruebaCRUD.Models.UsersViewModel
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="text-center flex-column justify-content-end gap-2">
+    <h1 class="display-5">Lista de Usuarios</h1>
+    <div class="d-flex flex-column align-items-end justify-content-end">
+        <div>
+            <a class="btn btn-primary mb-3 ms-auto" href="@(Url.Content($"/create"))">Nuevo Usuario</a>
+        </div>
+        <table class="col-auto table table-striped table-dark table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre(s)</th>
+                    <th scope="col">Apellido(s)</th>
+                    <th scope="col">DNI</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Users)
+                {
+                    <tr onclick="location.href = '@(Url.Content($"/{item.Id}"))'">
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Nombre</td>
+                        <td>@item.Apellido</td>
+                        <td>@item.Dni</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
